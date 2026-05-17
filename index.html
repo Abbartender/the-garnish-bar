@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Garnish Bar & Atelier — El Templo de la Coctelería · Mendoza</title>
+<meta name="description" content="Cocktail Bar, Whisky Club & Restaurant en Av. Arístides Villanueva 528, Mendoza. Reservá tu mesa." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#0b241c;
+    --green:#0e2b22;
+    --green-mid:#15382c;
+    --green-soft:#1c4636;
+    --gold:#c9a557;
+    --gold-bright:#e2c277;
+    --gold-deep:#9a7f3f;
+    --cream:#f3ead8;
+    --cream-mute:#d8cdb4;
+    --ink:#0a1814;
+    --line:rgba(201,165,87,.35);
+    --line-soft:rgba(201,165,87,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--green);
+    color:var(--cream);
+    font-family:"Cormorant Garamond",Georgia,serif;
+    font-size:18px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:
+      radial-gradient(ellipse at 20% 0%,rgba(28,70,54,.6),transparent 60%),
+      radial-gradient(ellipse at 80% 100%,rgba(28,70,54,.4),transparent 55%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.78  0 0 0 0 0.65  0 0 0 0 0.34  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    pointer-events:none;
+    z-index:0;
+    opacity:.9;
+  }
+  main, header, footer{position:relative;z-index:1}
+
+  /* ------------- Typography ------------- */
+  .display{
+    font-family:"Cinzel",serif;
+    font-weight:500;
+    letter-spacing:.04em;
+    color:var(--gold);
+    text-transform:uppercase;
+  }
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:inline-flex;
+    align-items:center;
+    gap:.7em;
+  }
+  .eyebrow::before,.eyebrow::after{
+    content:"";
+    width:24px;height:1px;background:var(--gold);
+    opacity:.6;
+  }
+  .eyebrow.left::after{display:none}
+  .eyebrow.right::before{display:none}
+  .italic{font-style:italic;color:var(--cream-mute);font-weight:400}
+  a{color:inherit;text-decoration:none}
+
+  /* ------------- Buttons ------------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.65em;
+    font-family:"Cinzel",serif;
+    font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    padding:18px 32px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    background:transparent;
+    cursor:pointer;
+    transition:all .35s ease;
+    position:relative;
+    white-space:nowrap;
+  }
+  .btn:hover{
+    background:var(--gold);
+    color:var(--green-deep);
+  }
+  .btn.solid{
+    background:var(--gold);
+    color:var(--green-deep);
+  }
+  .btn.solid:hover{
+    background:var(--gold-bright);
+    border-color:var(--gold-bright);
+  }
+  .btn svg{width:14px;height:14px}
+
+  /* ------------- Nav ------------- */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 48px;
+    transition:background .4s ease,border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  nav.top.scrolled{
+    background:rgba(11,36,28,.85);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom-color:var(--line-soft);
+  }
+  nav.top .seal-mini{width:44px;height:44px}
+  nav.top .links{display:flex;gap:36px}
+  nav.top .links a{
+    font-family:"Cinzel",serif;font-size:12px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--cream-mute);
+    transition:color .3s ease;
+    position:relative;padding-bottom:4px;
+  }
+  nav.top .links a:hover{color:var(--gold)}
+  nav.top .links a::after{
+    content:"";position:absolute;left:50%;bottom:0;width:0;height:1px;
+    background:var(--gold);transition:all .3s ease;transform:translateX(-50%);
+  }
+  nav.top .links a:hover::after{width:100%}
+  nav.top .reserve-mini{
+    font-family:"Cinzel",serif;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;
+    border:1px solid var(--gold);color:var(--gold);
+    padding:10px 18px;
+    transition:all .3s ease;
+  }
+  nav.top .reserve-mini:hover{background:var(--gold);color:var(--green-deep)}
+
+  /* ------------- Hero ------------- */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:120px 32px 80px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .ornament-top,.hero .ornament-bottom{
+    position:absolute;left:50%;transform:translateX(-50%);
+    width:min(720px,80vw);height:24px;
+    opacity:.55;
+  }
+  .hero .ornament-top{top:110px}
+  .hero .ornament-bottom{bottom:80px}
+
+  .hero .seal-large{width:120px;height:120px;margin-bottom:36px}
+  .hero h1{
+    font-family:"Cinzel",serif;
+    font-weight:500;
+    font-size:clamp(48px,8.5vw,128px);
+    line-height:.95;
+    letter-spacing:.02em;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .hero h1 .amp{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:400;
+    text-transform:lowercase;letter-spacing:0;
+    color:var(--cream-mute);
+    font-size:.65em;vertical-align:.05em;
+    padding:0 .1em;
+  }
+  .hero .tagline{
+    font-family:"Cormorant Garamond",serif;
+    font-style:italic;font-weight:400;
+    font-size:clamp(20px,2.4vw,32px);
+    color:var(--cream-mute);
+    margin:18px 0 40px;
+    letter-spacing:.01em;
+  }
+  .hero .meta{
+    display:flex;align-items:center;gap:22px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--cream-mute);
+    margin-bottom:48px;
+  }
+  .hero .meta span.dot{
+    width:4px;height:4px;border-radius:50%;
+    background:var(--gold);opacity:.7;
+  }
+  .hero .cta-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+  .hero .scroll-hint{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.3em;
+    color:var(--cream-mute);text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    opacity:.7;
+  }
+  .scroll-hint .line{
+    width:1px;height:40px;background:var(--gold);
+    animation:scrollPulse 2.4s ease-in-out infinite;
+    transform-origin:top;
+  }
+  @keyframes scrollPulse{
+    0%,100%{transform:scaleY(.3);opacity:.4}
+    50%{transform:scaleY(1);opacity:1}
+  }
+
+  /* ------------- Section base ------------- */
+  section{position:relative;padding:140px 48px}
+  .container{max-width:1240px;margin:0 auto}
+  .section-head{text-align:center;margin-bottom:80px}
+  .section-head h2{
+    font-family:"Cinzel",serif;font-weight:500;
+    font-size:clamp(36px,5vw,68px);
+    color:var(--gold);
+    text-transform:uppercase;letter-spacing:.04em;
+    margin-top:16px;line-height:1.05;
+  }
+  .section-head .sub{
+    font-style:italic;color:var(--cream-mute);
+    font-size:clamp(18px,1.6vw,22px);
+    margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto;
+  }
+
+  /* ------------- Manifesto ------------- */
+  .manifesto{
+    background:var(--green-deep);
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .manifesto .grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  }
+  .manifesto .copy h2{
+    font-family:"Cinzel",serif;font-weight:500;
+    font-size:clamp(34px,4.4vw,58px);
+    color:var(--gold);
+    text-transform:uppercase;letter-spacing:.04em;
+    line-height:1.05;
+    margin:18px 0 28px;
+  }
+  .manifesto .copy p{
+    color:var(--cream);
+    font-size:20px;line-height:1.65;
+    margin-bottom:18px;
+    max-width:520px;
+  }
+  .manifesto .copy p .accent{color:var(--gold-bright);font-style:italic}
+  .manifesto .stats{
+    display:flex;gap:36px;margin-top:38px;flex-wrap:wrap;
+  }
+  .stat{border-left:1px solid var(--gold);padding-left:18px}
+  .stat .num{
+    font-family:"Cinzel",serif;font-size:36px;color:var(--gold);font-weight:600;
+    line-height:1;
+  }
+  .stat .lbl{
+    font-family:"JetBrains Mono",monospace;font-size:10px;
+    letter-spacing:.26em;text-transform:uppercase;color:var(--cream-mute);
+    margin-top:8px;display:block;
+  }
+
+  /* placeholder image card */
+  .img-frame{
+    position:relative;
+    aspect-ratio:4/5;
+    border:1px solid var(--gold);
+    padding:14px;
+    background:var(--green-mid);
+  }
+  .img-frame::before{
+    content:"";position:absolute;inset:6px;border:1px solid var(--line-soft);pointer-events:none;
+  }
+  .img-frame .corner{position:absolute;width:18px;height:18px;border:1px solid var(--gold)}
+  .img-frame .corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .img-frame .corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+  .img-frame .corner.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+  .img-frame .corner.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .img-frame .inner{
+    width:100%;height:100%;
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(201,165,87,.06) 0 2px,
+        transparent 2px 14px),
+      linear-gradient(180deg,var(--green-soft),var(--green-mid));
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;gap:10px;color:var(--cream-mute);
+  }
+  .img-frame .inner .ph-label{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.24em;
+    text-transform:uppercase;opacity:.75;
+  }
+  .img-frame .inner .ph-icon{font-family:"Cinzel",serif;font-size:34px;color:var(--gold);opacity:.6}
+  .img-frame .real-photo{
+    position:absolute;inset:14px;
+    width:calc(100% - 28px);height:calc(100% - 28px);
+    object-fit:cover;
+    z-index:2;
+  }
+
+  /* ------------- Pillars (3 cards) ------------- */
+  .pillars{background:var(--green)}
+  .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .pillar{
+    border:1px solid var(--line);
+    padding:48px 36px;
+    background:var(--green-mid);
+    position:relative;
+    transition:all .4s ease;
+  }
+  .pillar::before{
+    content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;
+    border:1px solid var(--line-soft);pointer-events:none;
+    transition:border-color .4s ease;
+  }
+  .pillar:hover{transform:translateY(-4px);background:var(--green-soft)}
+  .pillar:hover::before{border-color:var(--gold)}
+  .pillar .num{
+    font-family:"Cinzel",serif;font-size:14px;color:var(--gold-deep);
+    letter-spacing:.4em;margin-bottom:24px;display:block;
+  }
+  .pillar h3{
+    font-family:"Cinzel",serif;font-size:28px;color:var(--gold);
+    font-weight:500;letter-spacing:.04em;text-transform:uppercase;
+    margin-bottom:18px;line-height:1.1;
+  }
+  .pillar p{color:var(--cream-mute);font-size:17px;line-height:1.6}
+  .pillar .glyph{
+    width:48px;height:48px;margin-bottom:28px;color:var(--gold);
+  }
+
+  /* ------------- Whisky shelf ------------- */
+  .whisky{
+    background:var(--green-deep);
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+    overflow:hidden;
+  }
+  .whisky .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+  .whisky .copy h2{
+    font-family:"Cinzel",serif;font-weight:500;
+    font-size:clamp(34px,4.4vw,58px);
+    color:var(--gold);text-transform:uppercase;letter-spacing:.04em;
+    line-height:1.05;margin:18px 0 28px;
+  }
+  .whisky .copy p{color:var(--cream);font-size:19px;margin-bottom:14px;max-width:480px}
+  .whisky .regions{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px 36px;
+    margin-top:32px;max-width:480px;
+  }
+  .whisky .regions .row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1px dashed var(--line-soft);padding:10px 0;
+    font-family:"Cinzel",serif;font-size:13px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cream);
+  }
+  .whisky .regions .row .qty{color:var(--gold);font-weight:500}
+
+  .bottle-wall{
+    aspect-ratio:1/1;
+    border:1px solid var(--gold);
+    padding:14px;
+    background:var(--green-mid);
+    position:relative;
+  }
+  .bottle-wall::before{
+    content:"";position:absolute;inset:6px;border:1px solid var(--line-soft);
+  }
+  .bottle-wall .shelves{
+    width:100%;height:100%;
+    display:grid;grid-template-rows:repeat(5,1fr);
+    gap:0;
+    background:
+      linear-gradient(180deg,#1c4636,#0e2b22);
+    padding:14px 18px;
+  }
+  .bottle-wall .shelf{
+    display:flex;align-items:flex-end;gap:8px;
+    border-bottom:2px solid var(--gold-deep);
+    padding-bottom:0;
+  }
+  .bottle-wall .shelf:last-child{border-bottom:none}
+  .bottle{
+    flex:1;
+    height:78%;
+    background:linear-gradient(180deg,rgba(201,165,87,.12),rgba(201,165,87,.32));
+    border-radius:2px 2px 1px 1px;
+    position:relative;
+    box-shadow:inset 0 0 0 1px rgba(201,165,87,.25);
+  }
+  .bottle::before{
+    content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+    width:32%;height:10px;
+    background:rgba(201,165,87,.25);
+    border-radius:1px;
+  }
+  .bottle::after{
+    content:"";position:absolute;top:24%;left:14%;right:14%;height:18%;
+    background:rgba(243,234,216,.12);
+    border:1px solid rgba(201,165,87,.18);
+  }
+  .bottle.tall{height:88%}
+  .bottle.short{height:64%}
+  .bottle.amber{background:linear-gradient(180deg,rgba(201,128,40,.25),rgba(154,80,30,.55))}
+  .bottle.dark{background:linear-gradient(180deg,rgba(80,40,20,.5),rgba(36,18,8,.85))}
+  .bottle.pale{background:linear-gradient(180deg,rgba(220,200,140,.2),rgba(180,150,80,.5))}
+
+  /* ------------- Reviews CTA ------------- */
+  .reviews{
+    background:var(--green);
+    text-align:center;
+  }
+  .reviews .stars{
+    display:flex;justify-content:center;gap:8px;margin-bottom:18px;color:var(--gold);
+    font-size:24px;letter-spacing:.1em;
+  }
+  .reviews .pull-quote{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:clamp(24px,2.6vw,34px);
+    line-height:1.35;
+    max-width:880px;margin:0 auto 18px;color:var(--cream);
+    position:relative;padding:0 60px;
+  }
+  .reviews .pull-quote::before,.reviews .pull-quote::after{
+    font-family:"Cinzel",serif;color:var(--gold);font-size:72px;
+    line-height:1;position:absolute;font-style:normal;opacity:.55;
+  }
+  .reviews .pull-quote::before{content:"“";left:0;top:-10px}
+  .reviews .pull-quote::after{content:"”";right:0;bottom:-30px}
+  .reviews .attribution{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--cream-mute);margin-bottom:60px;
+  }
+  .review-cards{
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+    max-width:980px;margin:0 auto;
+  }
+  .review-card{
+    border:1px solid var(--line);
+    padding:36px 32px;
+    background:var(--green-mid);
+    text-align:left;
+    display:flex;flex-direction:column;gap:16px;
+    transition:all .35s ease;
+    position:relative;
+  }
+  .review-card::before{
+    content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;
+    border:1px solid var(--line-soft);pointer-events:none;
+    transition:border-color .35s ease;
+  }
+  .review-card:hover{background:var(--green-soft);transform:translateY(-3px)}
+  .review-card:hover::before{border-color:var(--gold)}
+  .review-card .head{
+    display:flex;align-items:center;gap:14px;
+  }
+  .review-card .logo{
+    width:44px;height:44px;
+    border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Cinzel",serif;font-weight:700;color:var(--gold);font-size:18px;
+  }
+  .review-card .source{
+    font-family:"Cinzel",serif;font-size:13px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);
+  }
+  .review-card .rating{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;
+    color:var(--cream-mute);margin-top:2px;
+  }
+  .review-card .stim{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:19px;
+    color:var(--cream);line-height:1.5;
+  }
+  .review-card .act{
+    margin-top:auto;
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:"Cinzel",serif;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);
+    padding-top:8px;
+    border-top:1px solid var(--line-soft);
+  }
+  .review-card .act svg{width:12px;height:12px;transition:transform .3s ease}
+  .review-card:hover .act svg{transform:translateX(4px)}
+
+  /* ------------- Visit / Location ------------- */
+  .visit{background:var(--green-deep)}
+  .visit .grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch;
+  }
+  .visit .info{padding-right:24px}
+  .visit h2{
+    font-family:"Cinzel",serif;font-weight:500;
+    font-size:clamp(34px,4.4vw,58px);
+    color:var(--gold);text-transform:uppercase;letter-spacing:.04em;
+    line-height:1.05;margin:18px 0 32px;
+  }
+  .visit .address-block{
+    border-left:1px solid var(--gold);padding-left:24px;margin-bottom:36px;
+  }
+  .visit .address-block .label{
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--gold);
+  }
+  .visit .address-block .value{
+    font-family:"Cinzel",serif;font-size:24px;color:var(--cream);
+    text-transform:uppercase;letter-spacing:.04em;margin-top:8px;
+    line-height:1.3;
+  }
+  .visit .address-block .value .small{
+    display:block;font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:18px;color:var(--cream-mute);text-transform:none;letter-spacing:0;
+    margin-top:4px;
+  }
+  .hours{
+    border:1px solid var(--line);
+    padding:28px 32px;
+    margin-bottom:36px;
+    background:var(--green-mid);
+    position:relative;
+  }
+  .hours::before{
+    content:"";position:absolute;inset:8px;border:1px solid var(--line-soft);pointer-events:none;
+  }
+  .hours h4{
+    font-family:"Cinzel",serif;font-size:14px;letter-spacing:.26em;
+    color:var(--gold);text-transform:uppercase;margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hours h4::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  .hours .row{
+    display:flex;justify-content:space-between;padding:8px 0;
+    border-bottom:1px dashed var(--line-soft);
+    font-size:17px;
+  }
+  .hours .row:last-child{border-bottom:none}
+  .hours .row .day{font-family:"Cinzel",serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-mute)}
+  .hours .row .time{color:var(--gold);font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.1em}
+
+  .visit .contacts{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+  .visit .contact-pill{
+    display:inline-flex;align-items:center;gap:10px;
+    border:1px solid var(--line);padding:14px 22px;
+    font-family:"Cinzel",serif;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--cream);
+    transition:all .3s ease;
+  }
+  .visit .contact-pill:hover{border-color:var(--gold);color:var(--gold)}
+  .visit .contact-pill svg{width:14px;height:14px;color:var(--gold)}
+
+  .map-frame{
+    position:relative;
+    border:1px solid var(--gold);
+    padding:14px;
+    background:var(--green-mid);
+    min-height:560px;
+    display:flex;flex-direction:column;
+  }
+  .map-frame::before{
+    content:"";position:absolute;inset:6px;border:1px solid var(--line-soft);pointer-events:none;
+  }
+  .map-inner{
+    flex:1;
+    background:
+      linear-gradient(180deg,#0a2018,#0e2b22);
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .map-inner svg.streets{position:absolute;inset:0;width:100%;height:100%;opacity:.4}
+  .map-pin{
+    position:relative;z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .map-pin .dot{
+    width:14px;height:14px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 6px rgba(201,165,87,.2),0 0 0 14px rgba(201,165,87,.1);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 6px rgba(201,165,87,.2),0 0 0 14px rgba(201,165,87,.1)}
+    50%{box-shadow:0 0 0 10px rgba(201,165,87,.3),0 0 0 22px rgba(201,165,87,.15)}
+  }
+  .map-pin .label{
+    font-family:"Cinzel",serif;font-size:11px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--gold);
+    background:var(--green-deep);padding:6px 14px;
+    border:1px solid var(--gold);
+  }
+  .map-frame .open-map{
+    position:absolute;bottom:24px;right:24px;z-index:3;
+  }
+
+  /* ------------- Reservation banner ------------- */
+  .reserve-cta{
+    background:var(--green-deep);
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+    padding:120px 48px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .reserve-cta .ornament{
+    position:absolute;left:50%;transform:translateX(-50%);
+    width:min(720px,80vw);height:24px;opacity:.45;
+  }
+  .reserve-cta .ornament.top{top:40px}
+  .reserve-cta .ornament.bot{bottom:40px}
+  .reserve-cta h2{
+    font-family:"Cinzel",serif;font-weight:500;
+    font-size:clamp(40px,6vw,84px);
+    color:var(--gold);text-transform:uppercase;letter-spacing:.04em;
+    line-height:1.02;margin:18px 0 14px;
+  }
+  .reserve-cta .lead{
+    font-style:italic;color:var(--cream-mute);
+    font-size:clamp(20px,2vw,26px);
+    margin-bottom:48px;max-width:640px;margin-left:auto;margin-right:auto;
+  }
+  .reserve-cta .btn{padding:22px 48px;font-size:14px}
+
+  /* ------------- Footer ------------- */
+  footer{
+    background:#081d16;
+    padding:80px 48px 36px;
+    border-top:1px solid var(--line-soft);
+  }
+  footer .grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;
+    max-width:1240px;margin:0 auto 60px;
+  }
+  footer .brand{display:flex;flex-direction:column;gap:18px}
+  footer .brand .seal-mini{width:64px;height:64px}
+  footer .brand p{color:var(--cream-mute);font-size:16px;max-width:320px;font-style:italic}
+  footer h5{
+    font-family:"Cinzel",serif;font-size:12px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+  }
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  footer ul a{color:var(--cream-mute);font-size:16px;transition:color .25s ease}
+  footer ul a:hover{color:var(--gold)}
+  footer .legal{
+    border-top:1px solid var(--line-soft);
+    padding-top:24px;
+    max-width:1240px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;
+    color:var(--cream-mute);text-transform:uppercase;
+  }
+
+  /* ------------- WhatsApp floating ------------- */
+  .wa-float{
+    position:fixed;bottom:28px;right:28px;z-index:90;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--gold);color:var(--green-deep);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.4);
+    transition:all .3s ease;
+    border:2px solid var(--green-deep);
+  }
+  .wa-float:hover{transform:scale(1.06);background:var(--gold-bright)}
+  .wa-float svg{width:28px;height:28px}
+
+  /* ------------- Reveal animations ------------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ------------- Responsive ------------- */
+  @media (max-width:980px){
+    nav.top{padding:14px 20px}
+    nav.top .links{display:none}
+    section{padding:90px 24px}
+    .manifesto .grid,.whisky .grid,.visit .grid{grid-template-columns:1fr;gap:50px}
+    .pillars-grid{grid-template-columns:1fr;gap:20px}
+    .review-cards{grid-template-columns:1fr}
+    footer .grid{grid-template-columns:1fr 1fr;gap:36px}
+    footer .legal{flex-direction:column;gap:14px;text-align:center}
+    .hero .meta{flex-wrap:wrap;justify-content:center;gap:10px}
+    .reviews .pull-quote{padding:0 24px}
+    .reviews .pull-quote::before{left:-4px}
+    .reviews .pull-quote::after{right:-4px}
+  }
+  @media (max-width:560px){
+    footer .grid{grid-template-columns:1fr}
+    .hero h1{font-size:54px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- The brand seal — recreated -->
+    <symbol id="seal" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="98" fill="#0e2b22"/>
+      <circle cx="100" cy="100" r="92" fill="none" stroke="#c9a557" stroke-width="3"/>
+      <circle cx="100" cy="100" r="82" fill="none" stroke="#c9a557" stroke-width="1"/>
+      <!-- Text on path: top arc -->
+      <defs>
+        <path id="sealTop" d="M 22,100 A 78,78 0 0 1 178,100" />
+        <path id="sealBot" d="M 28,108 A 72,72 0 0 0 172,108" />
+      </defs>
+      <text fill="#c9a557" font-family="Cinzel, serif" font-size="13" font-weight="600" letter-spacing="2">
+        <textPath href="#sealTop" startOffset="50%" text-anchor="middle">THE GARNISH BAR &amp; ATELIER</textPath>
+      </text>
+      <text fill="#c9a557" font-family="Cinzel, serif" font-size="13" font-weight="600" letter-spacing="3">
+        <textPath href="#sealBot" startOffset="50%" text-anchor="middle">· MENDOZA ·</textPath>
+      </text>
+      <!-- GB monogram -->
+      <g fill="#c9a557" font-family="Cinzel, serif" font-weight="700">
+        <text x="78" y="128" font-size="78" text-anchor="middle">G</text>
+        <text x="122" y="128" font-size="78" text-anchor="middle">B</text>
+      </g>
+    </symbol>
+
+    <!-- Horizontal filigree ornament -->
+    <symbol id="ornament" viewBox="0 0 600 24">
+      <g stroke="#c9a557" stroke-width="1" fill="none">
+        <line x1="0" y1="12" x2="240" y2="12"/>
+        <line x1="360" y1="12" x2="600" y2="12"/>
+        <circle cx="300" cy="12" r="5" fill="#c9a557"/>
+        <circle cx="300" cy="12" r="9"/>
+        <circle cx="278" cy="12" r="2.5" fill="#c9a557"/>
+        <circle cx="322" cy="12" r="2.5" fill="#c9a557"/>
+        <path d="M 246,12 q 8,-8 16,0 q 8,8 16,0"/>
+        <path d="M 322,12 q 8,-8 16,0 q 8,8 16,0"/>
+        <circle cx="240" cy="12" r="1.5" fill="#c9a557"/>
+        <circle cx="360" cy="12" r="1.5" fill="#c9a557"/>
+      </g>
+    </symbol>
+
+    <!-- Star -->
+    <symbol id="star" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2 L14.6 8.6 L22 9.3 L16.5 14.3 L18 21.5 L12 17.8 L6 21.5 L7.5 14.3 L2 9.3 L9.4 8.6 Z"/>
+    </symbol>
+
+    <!-- Arrow -->
+    <symbol id="arrow" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" d="M5 12 L19 12 M13 6 L19 12 L13 18"/>
+    </symbol>
+
+    <!-- Pin -->
+    <symbol id="pin" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2 C 7.6 2 4 5.6 4 10 C 4 16 12 22 12 22 S 20 16 20 10 C 20 5.6 16.4 2 12 2 Z M12 12.5 A 2.5 2.5 0 1 1 12 7.5 A 2.5 2.5 0 0 1 12 12.5 Z"/>
+    </symbol>
+
+    <!-- WhatsApp -->
+    <symbol id="wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M20.5 3.5A11.5 11.5 0 0 0 4 19.4L2.5 24l4.7-1.5A11.5 11.5 0 1 0 20.5 3.5Zm-8.5 18a9.6 9.6 0 0 1-4.9-1.4l-.4-.2-2.8.9.9-2.7-.2-.4a9.5 9.5 0 1 1 7.4 3.8Zm5.5-7.1c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a7.8 7.8 0 0 1-2.3-1.4 8.5 8.5 0 0 1-1.6-2c-.2-.3 0-.5.1-.7l.5-.5a2 2 0 0 0 .3-.5.4.4 0 0 0 0-.4l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.6c0 1.5 1.1 3 1.3 3.2s2.2 3.3 5.3 4.6a14.7 14.7 0 0 0 1.8.7 4.3 4.3 0 0 0 2 .1 3.1 3.1 0 0 0 2-1.4 2.6 2.6 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4Z"/>
+    </symbol>
+
+    <!-- Instagram -->
+    <symbol id="ig" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/>
+    </symbol>
+
+    <!-- Glass / cocktail -->
+    <symbol id="glass" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M8 8 L40 8 L26 26 L26 38 L34 40 L14 40 L22 38 L22 26 Z"/>
+        <circle cx="18" cy="16" r="1.8" fill="currentColor"/>
+      </g>
+    </symbol>
+    <!-- Whisky / decanter -->
+    <symbol id="decanter" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <rect x="18" y="6" width="12" height="6"/>
+        <path d="M14 14 L34 14 L36 28 Q 36 40 24 40 Q 12 40 12 28 Z"/>
+        <path d="M14 30 Q 24 26 34 30" />
+      </g>
+    </symbol>
+    <!-- Plate / atelier -->
+    <symbol id="plate" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="24" cy="24" r="16"/>
+        <circle cx="24" cy="24" r="10"/>
+        <path d="M19 22 q 5 -5 10 0"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============== NAV ============== -->
+<nav class="top" id="nav">
+  <a href="#top" aria-label="The Garnish Bar"><svg class="seal-mini"><use href="#seal"/></svg></a>
+  <div class="links">
+    <a href="#templo">El Templo</a>
+    <a href="#whisky">Whisky Library</a>
+    <a href="menu.html">Carta</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#visitanos">Visitanos</a>
+  </div>
+  <a class="reserve-mini" href="https://the-garnish-bar.meitre.com" target="_blank" rel="noopener">Reservar</a>
+</nav>
+
+<main id="top">
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <svg class="ornament-top"><use href="#ornament"/></svg>
+  <svg class="seal-large reveal in"><use href="#seal"/></svg>
+  <h1 class="reveal in">The Garnish <span class="amp">&amp;</span> Atelier</h1>
+  <p class="tagline reveal in">El Templo de la Coctelería · desde 2021</p>
+  <div class="meta reveal in">
+    <span>Cocktail Bar</span><span class="dot"></span>
+    <span>Whisky Club</span><span class="dot"></span>
+    <span>Restaurant</span>
+  </div>
+  <div class="cta-row reveal in">
+    <a class="btn solid" href="https://the-garnish-bar.meitre.com" target="_blank" rel="noopener">
+      Reservar Mesa
+      <svg><use href="#arrow"/></svg>
+    </a>
+    <a class="btn" href="menu.html">
+      Ver la Carta
+      <svg><use href="#arrow"/></svg>
+    </a>
+    <a class="btn" href="#visitanos">
+      Cómo Llegar
+      <svg><use href="#pin"/></svg>
+    </a>
+  </div>
+  <svg class="ornament-bottom"><use href="#ornament"/></svg>
+  <div class="scroll-hint">
+    <span>Descender</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ============== MANIFESTO ============== -->
+<section class="manifesto" id="templo">
+  <div class="container">
+    <div class="grid">
+      <div class="copy reveal">
+        <span class="eyebrow left">— Capítulo I · El Templo</span>
+        <h2>Un altar dedicado al<br><span class="italic" style="text-transform:none;letter-spacing:.01em">arte de mixología</span></h2>
+        <p>Sobre la concurrida Av. Arístides Villanueva, una <span class="accent">puerta discreta</span> guarda el bar más laureado de Mendoza. Adentro, luz baja, madera oscura, y una barra que no es barra: es altar.</p>
+        <p>Cada trago es liturgia. Cada destilado, reliquia. Cada mesa, un rito de paso para quienes entienden que la coctelería de autor es <span class="accent">tiempo medido en gotas</span>.</p>
+        <div class="stats">
+          <div class="stat"><div class="num">420+</div><span class="lbl">Whiskies del mundo</span></div>
+          <div class="stat"><div class="num">350+</div><span class="lbl">Destilados en barra</span></div>
+          <div class="stat"><div class="num">4.7</div><span class="lbl">Google · 893 reseñas</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="img-frame">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img class="real-photo" src="images/bar-interior.jpg" alt="Interior de The Garnish Bar" onerror="this.style.display='none'" />
+          <div class="inner">
+            <span class="ph-icon">⌘</span>
+            <span class="ph-label">[ Interior · barra principal ]</span>
+            <span class="ph-label" style="opacity:.5">images/bar-interior.jpg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PILLARS ============== -->
+<section class="pillars">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span>Capítulo II · La propuesta</span></span>
+      <h2>Tres oficios,<br>una sola casa</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <svg class="glyph"><use href="#glass"/></svg>
+        <span class="num">— 01 —</span>
+        <h3>Cocktail Bar</h3>
+        <p>Carta de autor firmada por nuestro bartender principal. Clásicos rescatados, signatures que ya son leyenda local — el <em>Libación al Ron</em> y nuestro <em>Penicillin</em> ahumado entre los más pedidos del país.</p>
+      </div>
+      <div class="pillar reveal">
+        <svg class="glyph"><use href="#decanter"/></svg>
+        <span class="num">— 02 —</span>
+        <h3>Whisky Club</h3>
+        <p>Más de 420 referencias de Escocia, Irlanda, Japón, Estados Unidos y Argentina. Catas con maestros guías, ediciones limitadas, y la mejor barra de single malts al oeste del Atlántico.</p>
+      </div>
+      <div class="pillar reveal">
+        <svg class="glyph"><use href="#plate"/></svg>
+        <span class="num">— 03 —</span>
+        <h3>Atelier · Cocina</h3>
+        <p>Picadas, tapas, milanesas, hamburguesas y el clásico filet américain. Una cocina pensada como contrapeso al trago — porciones generosas, insumos elegidos, maridajes pensados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHISKY ============== -->
+<section class="whisky" id="whisky">
+  <div class="container">
+    <div class="grid">
+      <div class="reveal">
+        <div class="bottle-wall">
+          <div class="shelves">
+            <div class="shelf">
+              <div class="bottle tall amber"></div>
+              <div class="bottle short pale"></div>
+              <div class="bottle"></div>
+              <div class="bottle tall dark"></div>
+              <div class="bottle amber"></div>
+              <div class="bottle pale"></div>
+              <div class="bottle short"></div>
+            </div>
+            <div class="shelf">
+              <div class="bottle"></div>
+              <div class="bottle dark"></div>
+              <div class="bottle short amber"></div>
+              <div class="bottle tall"></div>
+              <div class="bottle pale"></div>
+              <div class="bottle amber"></div>
+              <div class="bottle short dark"></div>
+            </div>
+            <div class="shelf">
+              <div class="bottle tall pale"></div>
+              <div class="bottle"></div>
+              <div class="bottle amber"></div>
+              <div class="bottle short"></div>
+              <div class="bottle dark"></div>
+              <div class="bottle tall amber"></div>
+              <div class="bottle"></div>
+            </div>
+            <div class="shelf">
+              <div class="bottle amber"></div>
+              <div class="bottle pale"></div>
+              <div class="bottle short dark"></div>
+              <div class="bottle"></div>
+              <div class="bottle tall"></div>
+              <div class="bottle short amber"></div>
+              <div class="bottle dark"></div>
+            </div>
+            <div class="shelf">
+              <div class="bottle short"></div>
+              <div class="bottle tall amber"></div>
+              <div class="bottle pale"></div>
+              <div class="bottle dark"></div>
+              <div class="bottle"></div>
+              <div class="bottle short pale"></div>
+              <div class="bottle amber"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copy reveal">
+        <span class="eyebrow left">— Capítulo III · Whisky Library</span>
+        <h2>420 etiquetas.<br>5 continentes.<br>Una sola obsesión.</h2>
+        <p>Single malts añejados sobre roble escocés. Bourbons de Kentucky. Japoneses imposibles de conseguir. Whiskies argentinos jóvenes y audaces. Una biblioteca viva, en constante curaduría.</p>
+        <div class="regions">
+          <div class="row"><span>Escocia</span><span class="qty">186</span></div>
+          <div class="row"><span>EE.UU.</span><span class="qty">94</span></div>
+          <div class="row"><span>Irlanda</span><span class="qty">52</span></div>
+          <div class="row"><span>Japón</span><span class="qty">38</span></div>
+          <div class="row"><span>Argentina</span><span class="qty">29</span></div>
+          <div class="row"><span>Mundo</span><span class="qty">21</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== REVIEWS ============== -->
+<section class="reviews" id="resenas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span>Capítulo IV · La voz de quienes vinieron</span></span>
+      <h2>Lo que dicen<br>nuestros parroquianos</h2>
+    </div>
+
+    <div class="reveal">
+      <div class="stars" aria-label="5 estrellas">
+        <svg width="22" height="22"><use href="#star"/></svg>
+        <svg width="22" height="22"><use href="#star"/></svg>
+        <svg width="22" height="22"><use href="#star"/></svg>
+        <svg width="22" height="22"><use href="#star"/></svg>
+        <svg width="22" height="22"><use href="#star"/></svg>
+      </div>
+      <p class="pull-quote">El mejor bar de la ciudad de Mendoza. Los tragos son deliciosos, el ambiente es íntimo y los bartenders y el staff hacen que te sientas como un local.</p>
+      <div class="attribution">— Reseña Google · Mendoza</div>
+    </div>
+
+    <div class="review-cards">
+      <a class="review-card reveal" href="https://maps.app.goo.gl/yUHhMMfoeQuYixeP6?g_st=ic" target="_blank" rel="noopener">
+        <div class="head">
+          <div class="logo">G</div>
+          <div>
+            <div class="source">Google Maps</div>
+            <div class="rating">★ 4.7 / 5 · 893 reseñas</div>
+          </div>
+        </div>
+        <p class="stim">¿Probaste el Penicillin ahumado o pedís siempre el de siempre? Tu reseña ayuda a otro viajero a encontrar su próximo trago favorito en Mendoza.</p>
+        <span class="act">Dejar una reseña en Google <svg><use href="#arrow"/></svg></span>
+      </a>
+      <a class="review-card reveal" href="https://www.tripadvisor.com.ar/Restaurant_Review-g312781-d23091744-Reviews-The_Garnish_Bar-Mendoza_Province_of_Mendoza_Cuyo.html" target="_blank" rel="noopener">
+        <div class="head">
+          <div class="logo">T</div>
+          <div>
+            <div class="source">Tripadvisor</div>
+            <div class="rating">★ 4.4 / 5 · #222 en Mendoza</div>
+          </div>
+        </div>
+        <p class="stim">Si llegaste hasta acá desde otra ciudad, contá tu historia. Una buena reseña en Tripadvisor es la mejor manera de devolver el viaje.</p>
+        <span class="act">Compartir en Tripadvisor <svg><use href="#arrow"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== VISIT ============== -->
+<section class="visit" id="visitanos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span>Capítulo V · Visitanos</span></span>
+      <h2 style="margin:16px 0 0">El templo te espera</h2>
+    </div>
+
+    <div class="grid">
+      <div class="info reveal">
+        <div class="address-block">
+          <span class="label">▸ Dirección</span>
+          <div class="value">
+            Av. Arístides Villanueva 528
+            <span class="small">Ciudad de Mendoza · M5500 · Argentina</span>
+          </div>
+        </div>
+
+        <div class="hours">
+          <h4>Horarios</h4>
+          <div class="row"><span class="day">Lun · Mar · Jue</span><span class="time">18:00 — 03:00</span></div>
+          <div class="row"><span class="day">Miércoles</span><span class="time">18:00 — 03:00 · Guest Bartender</span></div>
+          <div class="row"><span class="day">Viernes</span><span class="time">18:00 — 04:00</span></div>
+          <div class="row"><span class="day">Sábado</span><span class="time">19:00 — 04:00</span></div>
+          <div class="row"><span class="day">Domingo</span><span class="time">19:00 — 02:00</span></div>
+        </div>
+
+        <p style="color:var(--cream-mute);font-style:italic;margin-bottom:24px;max-width:480px">
+          Reservas hasta las 22:00. Después, por orden de llegada.
+        </p>
+
+        <div class="contacts">
+          <a class="contact-pill" href="https://wa.me/5492613398105" target="_blank" rel="noopener">
+            <svg><use href="#wa"/></svg> +54 9 2613 39-8105
+          </a>
+          <a class="contact-pill" href="https://www.instagram.com/thegarnishbar" target="_blank" rel="noopener">
+            <svg><use href="#ig"/></svg> @thegarnishbar
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="map-frame">
+          <div class="map-inner">
+            <svg class="streets" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+              <g stroke="#c9a557" stroke-width=".6" fill="none" opacity=".5">
+                <path d="M 0,140 L 400,160"/>
+                <path d="M 0,260 L 400,240"/>
+                <path d="M 120,0 L 140,400"/>
+                <path d="M 260,0 L 240,400"/>
+                <path d="M 0,80 L 400,100"/>
+                <path d="M 0,320 L 400,300"/>
+              </g>
+              <g stroke="#c9a557" stroke-width=".3" fill="none" opacity=".3">
+                <path d="M 60,0 L 70,400"/>
+                <path d="M 320,0 L 330,400"/>
+                <path d="M 0,200 L 400,200" stroke-width=".5"/>
+              </g>
+              <text x="14" y="155" fill="#c9a557" opacity=".5" font-family="JetBrains Mono" font-size="7" letter-spacing="2">AV. ARÍSTIDES VILLANUEVA</text>
+              <text x="14" y="255" fill="#c9a557" opacity=".4" font-family="JetBrains Mono" font-size="7" letter-spacing="2">AV. BELGRANO</text>
+            </svg>
+            <div class="map-pin">
+              <span class="dot"></span>
+              <span class="label">Acá</span>
+            </div>
+          </div>
+          <a class="btn open-map" href="https://maps.app.goo.gl/yUHhMMfoeQuYixeP6?g_st=ic" target="_blank" rel="noopener" style="padding:12px 22px;font-size:11px">
+            Abrir en Maps <svg><use href="#arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== RESERVE CTA ============== -->
+<section class="reserve-cta">
+  <svg class="ornament top"><use href="#ornament"/></svg>
+  <span class="eyebrow"><span>— Reservas online · sistema Meitre —</span></span>
+  <h2>Asegurá<br>tu mesa</h2>
+  <p class="lead">Recomendamos reservar — sobre todo jueves, viernes y sábados después de las 21:00.</p>
+  <a class="btn solid" href="https://the-garnish-bar.meitre.com" target="_blank" rel="noopener">
+    Reservar Ahora <svg><use href="#arrow"/></svg>
+  </a>
+  <svg class="ornament bot"><use href="#ornament"/></svg>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="grid">
+    <div class="brand">
+      <svg class="seal-mini"><use href="#seal"/></svg>
+      <p>The Garnish Bar &amp; Atelier — Cocktail Bar, Whisky Club &amp; Restaurant. Mendoza, Argentina.</p>
+    </div>
+    <div>
+      <h5>Navegación</h5>
+      <ul>
+        <li><a href="#templo">El Templo</a></li>
+        <li><a href="#whisky">Whisky Library</a></li>
+        <li><a href="menu.html">Carta · ES / EN / PT</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
+        <li><a href="#visitanos">Visitanos</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Reservas</h5>
+      <ul>
+        <li><a href="https://the-garnish-bar.meitre.com" target="_blank" rel="noopener">Meitre · online</a></li>
+        <li><a href="https://wa.me/5492613398105" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="tel:+5492613398105">+54 9 2613 39-8105</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Social</h5>
+      <ul>
+        <li><a href="https://www.instagram.com/thegarnishbar" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://maps.app.goo.gl/yUHhMMfoeQuYixeP6?g_st=ic" target="_blank" rel="noopener">Google Maps</a></li>
+        <li><a href="https://www.tripadvisor.com.ar/Restaurant_Review-g312781-d23091744-Reviews-The_Garnish_Bar-Mendoza_Province_of_Mendoza_Cuyo.html" target="_blank" rel="noopener">Tripadvisor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 · The Garnish Bar &amp; Atelier · Mendoza</span>
+    <span>Av. Arístides Villanueva 528</span>
+  </div>
+</footer>
+
+<!-- WhatsApp floating -->
+<a class="wa-float" href="https://wa.me/5492613398105" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg><use href="#wa"/></svg>
+</a>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if(window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    for(const e of entries){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
